@@ -232,8 +232,3 @@ system. These facts are available as variables in Puppet files.
 * Fork `appliance-setup` repo: <https://help.github.com/articles/fork-a-repo>
 * Send pull requests
 * File bugs, issues, feature requests: <https://github.com/cirg/appliance-setup/issues?state=open>
-
-# Next Steps
-
-* Configuring applications
-* Additional components
