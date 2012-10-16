@@ -228,6 +228,7 @@ system. These facts are available as variables in Puppet files.
 
 # Contributing
 
+* Download and test `appliance-setup`
 * Set up git and a GitHub account: <https://help.github.com/articles/set-up-git>
 * Fork `appliance-setup` repo: <https://help.github.com/articles/fork-a-repo>
 * Send pull requests
