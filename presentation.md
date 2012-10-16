@@ -127,7 +127,7 @@ Package resource documentation:
 # Puppet Resources: Files
 
 	file { '/etc/ntp.conf':
-		ensure  =>  file,
+		ensure  => file,
 		mode	=> '0644',
 		owner   => 'root',
 		group   => 'root',
@@ -154,7 +154,7 @@ Service resource documentation:
 		}
 
 		file { '/etc/ntp.conf':
-			ensure  =>  file,
+			ensure  => file,
 			source  => template('ntp/ntp.conf.erb'),
 		}
 
