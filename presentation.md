@@ -65,7 +65,7 @@ TurnKey Linux provides prebuilt virtual machines.
   physical machines
 * based on Debian
 
-TurnKey Core provides a standard base on which to create our standard
+TurnKey Core provides a standard base on which to create standard
 server builds.
 
 <http://www.turnkeylinux.org>
