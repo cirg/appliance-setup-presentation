@@ -4,7 +4,7 @@
 
 # Summary
 
-A description of the `appliance-setup` package, how to use it, and the
+A description of the `appliance-setup` package, how to run it, and the
 technologies it uses.
 
 # `appliance-setup`
@@ -18,22 +18,21 @@ Project is on [GitHub](https://github.com):
 
 # Build Process Overview
 
-1. Create and Boot VM
-2. Download `appliance-setup`
-3. Run `appliance-setup`
+1. Create and boot the base VM.
+2. Download `appliance-setup`.
+3. Run `appliance-setup`.
 
-# Boot the VM
+# Create and Boot the Base VM
 
-The process for creating and booting the virtual machine depends on
-the virtualization software.
-
-Download [TurnKey Linux Core](http://www.turnkeylinux.org/core).
-
-<http://www.turnkeylinux.org/docs/installation-appliances-virtual box>
+* Download TurnKey Linux Core <http://www.turnkeylinux.org/core>.
+* The process for creating and booting the virtual machine depends on
+  the virtualization software.
+* Documentation for setting up the VM under Virtual Box:
+  <http://www.turnkeylinux.org/docs/installation-appliances-virtualbox>.
 
 # Download `appliance-setup`
 
-From a root prompt on the fresh VM:
+From a root prompt on the base VM:
 
 	git clone --recursive \
 		https://github.com/cirg/appliance-setup.git \
@@ -85,16 +84,36 @@ configuring systems.
 
 Puppet provides:
 
-* templates
-* dry-runs
-* logging
-* reporting
+* **Dry-runs**: show what would be done, but don't make any changes)
+* **Logging and reporting**: what changes were made, what failed
+* **Templates**: dynamic file content
+* **Reusable modules**: hundreds of modules to manage most
+  applications and services
 
 # Puppet Language
 
-* Resource: packages, files, services, etc.
-* Class: a collection of resources
-* Module: a collection of puppet files
+Puppet files (`*.pp`) define the desired state of a system.
+
+* **Resource**: packages, files, services, etc.
+* **Class**: a collection of resources
+* **Module**: a collection of puppet files
+
+<http://docs.puppetlabs.com/puppet/3/reference/lang_summary.html>
+
+# Running Puppet
+
+## Puppet command syntax
+
+	puppet <command> [options] <file>
+
+## Useful options
+
+* `--noop`: do not make any changes
+* `--show_diff`: show a diff for files that will be changed
+
+## Example
+
+    puppet apply --noop --show_diff file.pp
 
 # Puppet Resources: Packages
 
