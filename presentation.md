@@ -9,21 +9,20 @@ technologies it uses.
 
 # `appliance-setup`
 
-`appliance-setup` is a package for building standard server builds in
+`appliance-setup` is a package for creating standard server builds in
 a reproducible way.
 
-Code is on [GitHub](https://github.com):
+Project is on [GitHub](https://github.com):
 
 <https://github.com/cirg/appliance-setup>
 
-# Process
+# Build Process Overview
 
-1. Import/Instantiate VM
-2. Boot VM
-3. Download `appliance-setup`
-4. Run `appliance-setup`
+1. Create and Boot VM
+2. Download `appliance-setup`
+3. Run `appliance-setup`
 
-# Instantiate VM
+# Boot the VM
 
 The process for creating and booting the virtual machine depends on
 the virtualization software.
@@ -42,11 +41,14 @@ From a root prompt on the fresh VM:
 
 # Run `appliance-setup`
 
+Run the `appliance-setup` command:
+
 	APPLIANCE_COMPONENTS="apache tomcat mysql" \
 	/opt/appliance-setup/bin/appliance-setup apply
 
-`APPLIANCE_COMPONENTS` is a space separated list of components. Available components are under
-[puppet/modules/appliance_components/manifests](https://github.com/cirg/appliance-setup/tree/master/puppet/modules/appliance_components/manifests)
+_`APPLIANCE_COMPONENTS` is a space separated list of components.
+Available components are under
+[puppet/modules/appliance_components/manifests](https://github.com/cirg/appliance-setup/tree/master/puppet/modules/appliance_components/manifests)._
 
 # How `appliance-setup` Works
 
@@ -64,8 +66,8 @@ TurnKey Linux provides prebuilt virtual machines.
   physical machines
 * based on Debian
 
-TurnKey images provides a standard base on which to create our
-standard server builds.
+TurnKey Core provides a standard base on which to create our standard
+server builds.
 
 <http://www.turnkeylinux.org>
 
@@ -77,6 +79,10 @@ Puppet includes a language for defining the state of a system, tools
 for applying the defined state, and a server/client service for
 configuring systems.
 
+<http://puppetlabs.com/puppet/puppet-open-source/>
+
+# Puppet
+
 Puppet provides:
 
 * templates
@@ -84,24 +90,23 @@ Puppet provides:
 * logging
 * reporting
 
-<http://puppetlabs.com/puppet/puppet-open-source/>
-
 # Puppet Language
 
 * Resource: packages, files, services, etc.
 * Class: a collection of resources
 * Module: a collection of puppet files
 
-# Puppet Resources
-
-[Package](http://docs.puppetlabs.com/references/stable/type.html#package)
+# Puppet Resources: Packages
 
 	package { 'ntpd':
 		ensure => installed,
 	}
 
-[File](http://docs.puppetlabs.com/references/stable/type.html#file)
-	
+Package resource documentation:
+<http://docs.puppetlabs.com/references/stable/type.html#package>
+
+# Puppet Resources: Files
+
 	file { '/etc/ntp.conf':
 		ensure  =>  file,
 		mode	=> '0644',
@@ -110,11 +115,17 @@ Puppet provides:
 		source  => template('ntp/ntp.conf.erb'),
 	}
 
-[Service](http://docs.puppetlabs.com/references/stable/type.html#service)
+File resource documentation:
+<http://docs.puppetlabs.com/references/stable/type.html#file>
+	
+# Puppet Resources: Services
 	
 	service { 'ntpd':
 		ensure => running,
 	}
+
+Service resource documentation:
+<http://docs.puppetlabs.com/references/stable/type.html#service>
 
 # Puppet Classes
 
@@ -133,7 +144,7 @@ Puppet provides:
 		}
 	}
 
-# Dependencies
+# Puppet Resources Dependencies
 
 	class ntp {
 		package { 'ntpd':
