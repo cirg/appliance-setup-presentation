@@ -235,7 +235,5 @@ system. These facts are available as variables in Puppet files.
 
 # Next Steps
 
-* Testing
 * Configuring applications
 * Additional components
-* Configuration file
